@@ -4,12 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:WpfApp.ViewModel"
+        xmlns:converters ="clr-namespace:WpfApp.Converters"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <converters:IntToColorConverter x:Key="IntToColorConverter"></converters:IntToColorConverter>
+    </Window.Resources>
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,7 +33,15 @@
         <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding CopyUserValue}" ></TextBlock>
 
         <Button Grid.Column="1" Grid.Row="1" Content="Click me to increment" Command="{Binding IncrementCommand}"></Button>
-        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding IncrementedValue}" ></TextBlock>
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="1" 
+                   Text="{Binding IncrementedValue}" 
+                   VerticalAlignment="Stretch" 
+                   HorizontalAlignment="Stretch"
+                   FontSize="48"
+                   Background="{Binding IncrementedValue, Converter={StaticResource IntToColorConverter}}">
+            
+        </TextBlock>
 
     </Grid>
 </Window>
