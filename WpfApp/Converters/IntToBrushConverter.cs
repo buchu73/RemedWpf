@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace WpfApp.Converters
 {
-    public class IntToColorConverter : IValueConverter
+    public class IntToBrushConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
